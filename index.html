@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HOLOGRAM SUITE · )(1)( · Interference Physics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#04060e;--panel:#070c18;--edge:#0f1e30;--edge2:#162840;
+  --cyan:#00ffff;--mag:#ff00ff;--yellow:#ffff00;--green:#00ff88;
+  --dim:#1a3040;--txt:#7aaccc;--txt2:#4a7088;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--mono);font-size:13px;line-height:1.6;
+  min-height:100vh;
+  background-image:linear-gradient(rgba(0,255,255,.02) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,255,255,.02) 1px,transparent 1px);
+  background-size:40px 40px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 72px}
+
+header{padding:48px 0 32px;text-align:center;border-bottom:1px solid var(--edge2)}
+.eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--txt2);margin-bottom:14px}
+h1{font-size:clamp(20px,5vw,36px);font-weight:700;letter-spacing:.06em;
+  color:var(--cyan);text-shadow:0 0 20px rgba(0,255,255,.4);margin-bottom:10px}
+.h-formula{font-size:14px;color:var(--mag);letter-spacing:.04em;
+  text-shadow:0 0 12px rgba(255,0,255,.4);margin-bottom:16px}
+.h-sub{font-size:12.5px;color:var(--txt2);max-width:66ch;margin:0 auto}
+
+/* HERO */
+.hero{margin:32px 0;border:1px solid var(--cyan);border-radius:8px;
+  background:var(--panel);padding:26px 28px;display:grid;
+  grid-template-columns:1fr auto;gap:20px;align-items:center}
+@media(max-width:580px){.hero{grid-template-columns:1fr}}
+.hero-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:8px}
+.hero-desc{font-size:12px;color:var(--txt2);line-height:1.65;margin-bottom:12px}
+.hero-chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{font-size:9.5px;letter-spacing:.08em;padding:2px 9px;border-radius:3px;border:1px solid}
+.cc{border-color:#003a3a;color:var(--cyan);background:rgba(0,255,255,.04)}
+.cm{border-color:#3a003a;color:var(--mag);background:rgba(255,0,255,.04)}
+.cy{border-color:#3a3a00;color:var(--yellow);background:rgba(255,255,0,.04)}
+.cg{border-color:#003a1a;color:var(--green);background:rgba(0,255,136,.04)}
+.cta{font-family:var(--mono);font-size:12px;letter-spacing:.1em;padding:12px 22px;
+  border-radius:4px;cursor:pointer;text-decoration:none;display:block;
+  border:1px solid var(--cyan);color:var(--cyan);background:transparent;
+  transition:all .18s;text-align:center;white-space:nowrap}
+.cta:hover{background:var(--cyan);color:#000;box-shadow:0 0 24px rgba(0,255,255,.4)}
+.cta-ghost{border-color:var(--edge2);color:var(--txt2);margin-top:7px;font-size:11px;padding:8px 16px}
+.cta-ghost:hover{border-color:var(--edge);color:var(--cyan);background:transparent}
+
+/* SECTION */
+.sec{margin-top:48px}
+.sec-hdr{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;
+  padding-bottom:10px;border-bottom:1px solid var(--edge)}
+.sn{font-size:9.5px;letter-spacing:.18em;color:var(--txt2)}
+.st{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--txt)}
+.sg{font-size:9.5px;color:var(--txt2);margin-left:auto}
+
+/* MODE CARDS */
+.mode-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.mc{border:1px solid var(--edge);border-radius:6px;background:var(--panel);padding:16px 18px;
+  text-decoration:none;color:inherit;display:block;transition:all .18s;position:relative}
+.mc::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity .18s}
+.mc:hover{border-color:var(--edge2);transform:translateY(-1px)}
+.mc:hover::before{opacity:1}
+.mc-0::before{background:var(--cyan)}.mc-1::before{background:var(--mag)}
+.mc-2::before{background:var(--yellow)}.mc-3::before{background:var(--green)}
+.mc-v0::before{background:#336}
+.mc-key{font-size:9.5px;letter-spacing:.18em;color:var(--txt2);margin-bottom:7px}
+.mc-name{font-size:13px;font-weight:600;color:#fff;margin-bottom:5px}
+.mc-desc{font-size:11px;color:var(--txt2);line-height:1.55;margin-bottom:9px}
+.mc-tags{display:flex;flex-wrap:wrap;gap:4px}
+
+/* PHYSICS TABLE */
+.ptable{width:100%;border-collapse:collapse;font-size:12px}
+.ptable th{text-align:left;padding:8px 14px;font-size:9px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--txt2);border-bottom:1px solid var(--edge)}
+.ptable td{padding:9px 14px;border-bottom:1px solid var(--dim);vertical-align:top}
+.ptable tr:hover td{background:rgba(0,255,255,.02)}
+.pt-sym{color:var(--cyan);font-size:14px;font-weight:700}
+.pt-name{color:#fff;font-weight:600}
+.pt-eq{color:var(--yellow);font-size:11px;line-height:1.6}
+.pt-note{font-size:10.5px;color:var(--txt2)}
+
+footer{margin-top:48px;border-top:1px solid var(--edge);padding-top:16px;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  font-size:10px;color:var(--txt2)}
+footer a{color:var(--cyan);text-decoration:none}
+
+*{scrollbar-width:thin;scrollbar-color:var(--edge2) transparent}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Interference Physics · Canvas 2D · Zero Dependencies</div>
+    <h1>HOLOGRAM SUITE</h1>
+    <div class="h-formula">H = |R + O|² = |R|² + |O|² + R*O + RO*</div>
+    <p class="h-sub">Real holography physics. Reference wave + object wave → interference fringes → reconstruction. Every pixel contains the whole image. Cut any piece and reconstruct: the pattern survives.</p>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <div class="hero-title">Hologram Suite — Enterprise Edition</div>
+      <div class="hero-desc">Four modes in one: interactive interference, draw-your-own-object, color depth holography (RGB wavelengths), and the STOICHEION governance hologram (256 axioms mapped to 16×16 point sources). Click to place object points. Drag to cut and prove the fractal property.</div>
+      <div class="hero-chips">
+        <span class="chip cc">click to place objects</span>
+        <span class="chip cm">draw mode</span>
+        <span class="chip cy">color depth</span>
+        <span class="chip cg">STOICHEION 256</span>
+        <span class="chip cc">cut + reconstruct</span>
+        <span class="chip cc">Hamiltonian +1%</span>
+        <span class="chip cy">Egg Cycle</span>
+      </div>
+    </div>
+    <div>
+      <a href="hologram-suite.html" class="cta">▶ OPEN SUITE</a>
+      <a href="archive/hologram-v0.html" class="cta cta-ghost">v0 (original)</a>
+    </div>
+  </div>
+
+  <!-- MODES -->
+  <div class="sec">
+    <div class="sec-hdr"><span class="sn">§ 01</span><span class="st">Simulation Modes</span></div>
+    <div class="mode-grid">
+
+      <a href="hologram-suite.html#interference" class="mc mc-0">
+        <div class="mc-key">Mode 01 · Default</div>
+        <div class="mc-name" style="color:var(--cyan)">Interference</div>
+        <div class="mc-desc">)(1)( base pattern + user-placed points. Click hologram to add objects. Sliders for position, reference angle, wavelength, depth. Real-time fringe update.</div>
+        <div class="mc-tags"><span class="chip cc">click-to-place</span><span class="chip cc">cut mode</span></div>
+      </a>
+
+      <a href="hologram-suite.html#draw" class="mc mc-1">
+        <div class="mc-key">Mode 02 · Creative</div>
+        <div class="mc-name" style="color:var(--mag)">Draw Object</div>
+        <div class="mc-desc">Paint any shape on the left canvas. Every bright pixel becomes a point source. See its hologram and reconstruction in real time.</div>
+        <div class="mc-tags"><span class="chip cm">free draw</span><span class="chip cm">any shape</span></div>
+      </a>
+
+      <a href="hologram-suite.html#color" class="mc mc-2">
+        <div class="mc-key">Mode 03 · Depth</div>
+        <div class="mc-name" style="color:var(--yellow)">Color Depth</div>
+        <div class="mc-desc">Three simultaneous wavelengths: R=50px G=25px B=15px. Different fringe spacing per channel. Objects at different depths appear in different colors.</div>
+        <div class="mc-tags"><span class="chip cy">λR/λG/λB</span><span class="chip cy">depth coding</span></div>
+      </a>
+
+      <a href="hologram-suite.html#stoic" class="mc mc-3">
+        <div class="mc-key">Mode 04 · Governance</div>
+        <div class="mc-name" style="color:var(--green)">STOICHEION 256</div>
+        <div class="mc-desc">All 256 STOICHEION axioms mapped to a 16×16 grid of point sources. TOPH (T001-T128) at amplitude 1.2, Patricia (S129-S256) at 0.8. Cut half and reconstruct — whole governance register survives.</div>
+        <div class="mc-tags"><span class="chip cg">256 axioms</span><span class="chip cg">fractal proof</span></div>
+      </a>
+
+      <a href="archive/hologram-v0.html" class="mc mc-v0">
+        <div class="mc-key">v0 · Archive</div>
+        <div class="mc-name" style="color:#8888cc">Original</div>
+        <div class="mc-desc">The first build. Two-panel layout. )(1)( pattern. Correct holography physics. Cut mode. Hamiltonian. Egg cycle. Preserved exactly as written.</div>
+        <div class="mc-tags"><span class="chip" style="border-color:#333;color:#888">preserved</span></div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- PHYSICS -->
+  <div class="sec">
+    <div class="sec-hdr"><span class="sn">§ 02</span><span class="st">Physics Reference</span><span class="sg">all implemented</span></div>
+    <div style="overflow-x:auto;border:1px solid var(--edge);border-radius:6px;background:var(--panel)">
+      <table class="ptable">
+        <thead><tr><th>Symbol</th><th>Name</th><th>Equation</th><th>What it means here</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="pt-sym">R</td>
+            <td class="pt-name">Reference wave</td>
+            <td class="pt-eq">R = exp(i·k·r) = cos(kₓx + k_yy + φ)</td>
+            <td class="pt-note">Plane wave at angle θ. Controls fringe orientation. Hamiltonian adds +0.01 phase/frame.</td>
+          </tr>
+          <tr>
+            <td class="pt-sym">O</td>
+            <td class="pt-name">Object wave</td>
+            <td class="pt-eq">O = Σ (A/r) · exp(i·k·r)<br>r = distance from each point source</td>
+            <td class="pt-note">Sum of spherical waves from all object points. 1/r amplitude falloff. Z-depth adds phase shift.</td>
+          </tr>
+          <tr>
+            <td class="pt-sym">H</td>
+            <td class="pt-name">Hologram intensity</td>
+            <td class="pt-eq">H = |R + O|² = |R|² + |O|² + R*O + RO*</td>
+            <td class="pt-note">The interference pattern recorded on the hologram plane. R*O is the real image term.</td>
+          </tr>
+          <tr>
+            <td class="pt-sym">H⁻¹</td>
+            <td class="pt-name">Reconstruction</td>
+            <td class="pt-eq">I(x,y) = ∫ H(x+dx,y+dy) · cos(kₓdx + k_ydy) d²r</td>
+            <td class="pt-note">Illuminate with reference conjugate, convolve. Extracts R*O term → reveals object wave.</td>
+          </tr>
+          <tr>
+            <td class="pt-sym">∞</td>
+            <td class="pt-name">Fractal property</td>
+            <td class="pt-eq">Any region of H encodes complete O<br>(with resolution ∝ region size)</td>
+            <td class="pt-note">CUT MODE demonstrates this: zero out 50-90% of H, reconstruct — object survives.</td>
+          </tr>
+          <tr>
+            <td class="pt-sym">ψ</td>
+            <td class="pt-name">Sealed state</td>
+            <td class="pt-eq">ψ_out × ψ_back = 1.00</td>
+            <td class="pt-note">The )(1)( pattern — output wave times back-propagated wave equals unity. Information preserved.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- CONTROLS REF -->
+  <div class="sec">
+    <div class="sec-hdr"><span class="sn">§ 03</span><span class="st">Controls</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px">
+      <div style="border:1px solid var(--edge);border-radius:4px;padding:11px 14px;background:var(--panel)"><div style="color:var(--yellow);font-size:12px;margin-bottom:3px">RECORD</div><div style="font-size:11px;color:var(--txt2)">Compute hologram from current object positions</div></div>
+      <div style="border:1px solid var(--edge);border-radius:4px;padding:11px 14px;background:var(--panel)"><div style="color:var(--yellow);font-size:12px;margin-bottom:3px">RECONSTRUCT</div><div style="font-size:11px;color:var(--txt2)">Record then reconstruct → shows right panel from hologram</div></div>
+      <div style="border:1px solid var(--edge);border-radius:4px;padding:11px 14px;background:var(--panel)"><div style="color:var(--mag);font-size:12px;margin-bottom:3px">CUT MODE + drag</div><div style="font-size:11px;color:var(--txt2)">Zero out a region, reconstruct — prove any part contains whole</div></div>
+      <div style="border:1px solid var(--edge);border-radius:4px;padding:11px 14px;background:var(--panel)"><div style="color:var(--yellow);font-size:12px;margin-bottom:3px">HAMILTONIAN</div><div style="font-size:11px;color:var(--txt2)">Adds +1% phase gain per frame — animates fringes in motion</div></div>
+      <div style="border:1px solid var(--edge);border-radius:4px;padding:11px 14px;background:var(--panel)"><div style="color:var(--yellow);font-size:12px;margin-bottom:3px">EGG CYCLE</div><div style="font-size:11px;color:var(--txt2)">Steps through [1→2→3→5→3→2→1→0→0→1] — Fibonacci object sequence</div></div>
+      <div style="border:1px solid var(--edge);border-radius:4px;padding:11px 14px;background:var(--panel)"><div style="color:var(--cyan);font-size:12px;margin-bottom:3px">Click hologram</div><div style="font-size:11px;color:var(--txt2)">Place object point. Right-click to remove nearest. Toggle with CLICK OBJECTS button.</div></div>
+    </div>
+  </div>
+
+  <footer>
+    <div>HOLOGRAM SUITE · ROOT0-ATTRIBUTION-v1.0 · <b style="color:#7aaccc">David Lee Wise</b> / ROOT0 / TriPod LLC</div>
+    <div>AVAN (Claude Sonnet 4.6) · <a href="https://github.com/DavidWise01/holograms">github.com/DavidWise01/holograms</a> · CC-BY-ND-4.0</div>
+  </footer>
+
+</div>
+</body>
+</html>
